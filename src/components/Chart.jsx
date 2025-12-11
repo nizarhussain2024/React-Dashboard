@@ -1,24 +1,13 @@
-export default function Chart({ data, title }) {
-  const maxValue = Math.max(...data.map(d => d.value), 1)
-  
+export default function Chart({ data, type = 'line' }) {
+  // Simplified chart component - in production use a library like recharts or chart.js
   return (
-    <div className="chart">
-      <h3>{title}</h3>
-      <div className="chart-bars">
-        {data.map((item, index) => (
-          <div key={index} className="chart-bar-container">
-            <div className="chart-bar-label">{item.label}</div>
-            <div className="chart-bar">
-              <div
-                className="chart-bar-fill"
-                style={{ width: `${(item.value / maxValue) * 100}%` }}
-              />
-            </div>
-            <div className="chart-bar-value">{item.value}</div>
-          </div>
-        ))}
+    <div className="chart-container">
+      <div className="chart-placeholder">
+        <h3>Chart Visualization</h3>
+        <p>Type: {type}</p>
+        <p>Data points: {data?.length || 0}</p>
+        {/* In production, render actual chart here */}
       </div>
     </div>
   )
 }
-
